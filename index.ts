@@ -10,23 +10,28 @@
 class Person {
   private name: string;
   private age: number;
-  public saySomething:Function; -->falla
+  public saySomething: (s: string) => void;
 
   myNameIs = function() {
     console.log(this.name);
   };
-  constructor(name: string, agep: number, something: Function) {
+  constructor(name: string, agep: number, saySomething: (s: string) => void) {
     this.name = name;
     this.age = agep;
-    this.saySomething(something); --->falla
+    this.saySomething=saySomething;
   }
 }
 class Developer extends Person {
-  public bestLanguage=(language:string)=>{};
+  public bestLanguage: (s: string) => void;
 
-  constructor(name: string, age: number, something, language) {
-    super(name, age, something);
-    this.bestLanguage(something);
+  constructor(name:string, 
+  age:number, 
+  saySomething: (s: string) => void,
+
+  bestLanguage: (s: string) => void) {
+
+    super(name, age, saySomething);
+    this.bestLanguage=bestLanguage;
   }
 }
 
